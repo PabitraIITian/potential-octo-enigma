@@ -1,8 +1,8 @@
-from state import AdvisorState
-from utils import get_model_from_gcp
+from .state import AdvisorState
+from .utils import get_model_from_gcp
 from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_core.messages import SystemMessage, BaseMessage, HumanMessage, RemoveMessage
-from tools import (
+from .tools import (
     get_all_products,
     get_product
 )
@@ -26,7 +26,10 @@ def assistant(state: AdvisorState):
     return {'messages', [reply]}
 
 def safe_cut(messages: list[BaseMessage], keep_recent:int) -> int:
-    cut = len(messages) - keep_recent
+    if keep_recent <= 0:
+        return len(messages)
+
+    cut = max(0, len(messages) - keep_recent)
     while cut > 0 and not isinstance(messages[cut], HumanMessage):
         cut -= 1
     return cut
