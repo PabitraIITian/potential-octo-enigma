@@ -3,7 +3,6 @@ from langgraph.graph import (
     END,
     StateGraph
 )
-from langgraph.prebuilt import tools_condition
 from state import AdvisorState
 from nodes import (
     assistant, 
@@ -23,7 +22,7 @@ def route_after_assistant(state: AdvisorState) -> str:
     last = state["messages"][-1]
     if getattr(last, "tool_calls", None):
         return "tools"
-    return route_exit(state)
+    return "capture"
 
 
 def create_graph() -> StateGraph:
@@ -34,24 +33,27 @@ def create_graph() -> StateGraph:
     state_graph.add_node("assistant", assistant)
     state_graph.add_node("tools", get_tool_node())
     state_graph.add_node("summarise",summarize_converstation)
-    #state_graph.add_node("capture", capture_customer_info)
+    state_graph.add_node("capture", capture_customer_info)
 
-    #todo: need to define right edges
     state_graph.add_edge(START, "assistant")
     state_graph.add_conditional_edges(
         "assistant",
-        tools_condition,
+        route_after_assistant,
         {
             "tools": "tools",
-            "summarise": "summarise",
-            END: END
+            "capture": "capture",
         }
     )
     state_graph.add_edge("tools", "assistant")
-    #state_graph.add_edge("assistant", "capture")
-    #state_graph.add_edge("capture", END)
+    state_graph.add_conditional_edges(
+        "capture",
+        route_exit,
+        {
+            "summarize": "summarise",
+            END: END,
+        },
+    )
+    state_graph.add_edge("summarise", END)
     return state_graph
-
-
 
 
