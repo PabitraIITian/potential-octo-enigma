@@ -1,0 +1,86 @@
+{
+  "catalog_type": "FICTIONAL SAMPLE DATA - for local testing only; these products are not real",
+  "products": [
+    {
+      "product_id": "TEST-SKIN-001",
+      "category": "skin_care",
+      "product_name": "Sunveil Daily Shield SPF 30 (Fictional Sample)",
+      "description": "A fictional lightweight sunscreen for testing product recommendations.",
+      "price_inr": 499,
+      "size": "50 ml",
+      "how_to_use": [
+        "Apply evenly to exposed skin before going outdoors.",
+        "Reapply as directed on a real product label; this sample is not an actual product."
+      ],
+      "benefits": [
+        "Fictional sample claim: helps protect skin from sun exposure."
+      ],
+      "problems_it_solves": [
+        "A sample option for customers asking about everyday sun protection."
+      ],
+      "suitable_for": [
+        "Customers looking for a lightweight daily sunscreen."
+      ]
+    },
+    {
+      "product_id": "TEST-SKIN-002",
+      "category": "skin_care",
+      "product_name": "Citrus Dew Even-Tone Serum (Fictional Sample)",
+      "description": "A fictional serum with a made-up Citrus Dew complex for testing the catalog and advisor.",
+      "price_inr": 649,
+      "size": "30 ml",
+      "how_to_use": [
+        "Apply a few drops to clean skin as part of a cosmetic skincare routine."
+      ],
+      "benefits": [
+        "Fictional sample claim: helps improve the appearance of uneven-looking skin tone."
+      ],
+      "problems_it_solves": [
+        "Uneven-looking skin tone and dull appearance."
+      ],
+      "suitable_for": [
+        "Customers seeking a cosmetic serum for dull or uneven-looking skin."
+      ]
+    },
+    {
+      "product_id": "TEST-SKIN-003",
+      "category": "skin_care",
+      "product_name": "Cloudberry Comfort Cleanser (Fictional Sample)",
+      "description": "A fictional gentle face cleanser for testing product matching.",
+      "price_inr": 349,
+      "size": "100 ml",
+      "how_to_use": [
+        "Massage a small amount onto damp skin and rinse with water."
+      ],
+      "benefits": [
+        "Fictional sample claim: cleanses without leaving skin feeling tight."
+      ],
+      "problems_it_solves": [
+        "Daily removal of surface dirt and excess oil."
+      ],
+      "suitable_for": [
+        "Customers looking for a gentle everyday cleanser."
+      ]
+    },
+    {
+      "product_id": "TEST-SKIN-004",
+      "category": "skin_care",
+      "product_name": "Rainpetal Water Cream (Fictional Sample)",
+      "description": "A fictional lightweight face moisturizer for testing product recommendations.",
+      "price_inr": 429,
+      "size": "50 g",
+      "how_to_use": [
+        "Apply a small amount to clean skin when extra moisture is desired."
+      ],
+      "benefits": [
+        "Fictional sample claim: provides lightweight hydration without a heavy feel."
+      ],
+      "problems_it_solves": [
+        "Skin that feels dry or needs lightweight hydration."
+      ],
+      "suitable_for": [
+        "Customers who prefer a light, non-heavy moisturizer."
+      ]
+    }
+  ]
+}

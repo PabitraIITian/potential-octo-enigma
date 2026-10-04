@@ -1,5 +1,17 @@
 import json
+from pathlib import Path
+
 from langchain_core.tools import tool
+
+
+PRODUCTS_FILE = Path(__file__).resolve().parent / "data" / "products.json"
+
+
+def _load_products() -> list[dict]:
+    with PRODUCTS_FILE.open("r", encoding="utf-8") as file:
+        data = json.load(file)
+    return data["products"]
+
 
 @tool
 def get_all_products() -> str:
@@ -26,10 +38,7 @@ def get_all_products() -> str:
         Normal skin; Dry skin; Combination skin
     """
 
-    with open("data/products.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    products = data["products"]
+    products = _load_products()
 
     result = [
         "product_id | category | product_name | description | price_inr | "
@@ -80,10 +89,7 @@ def get_product(product_id: str) -> str:
         "LREAL-SKIN-001 | skin_care | HydraGlow Gentle Face Cleanser | ..."
 
     """
-    with open("data/products.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    for product in data["products"]:
+    for product in _load_products():
         if product["product_id"] == product_id:
             how_to_use = "; ".join(product["how_to_use"])
             benefits = "; ".join(product["benefits"])
@@ -104,4 +110,3 @@ def get_product(product_id: str) -> str:
             )
 
     return f"Product with product_id '{product_id}' was not found."
-
